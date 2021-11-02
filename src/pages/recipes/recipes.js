@@ -7,7 +7,6 @@ import './recipes.scss';
 const Recipes = ({history}) => {
    const [recipes, setRecipes] = useState([])
    const [isLoading, setIsLoading] = useState(false);
-   const {IsError, setIsError} = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
@@ -15,11 +14,8 @@ const Recipes = ({history}) => {
       .then((response) => {
         setRecipes(response)
         setIsLoading(false)
-      }).catch(error => {
-        setIsLoading(false)
-        setIsError(true)
       })
-  }, [setIsError])
+  }, [])
 
   const recipeClickHandler = (recipeId) => {
     history.push(`recipe/${recipeId}`)
